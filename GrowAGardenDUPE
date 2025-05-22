@@ -52,7 +52,7 @@ uiList.Padding = UDim.new(0, 4)
 
 local pets = {
     "Grow A Garden Supported Pets To Dupe",
-    "Dragonfly🐉 / Raccoon🦝 / Red Fox🦊",
+    "Dragonfly🐉 / Raccoon🦝 / Red Fox🦊 |Just Rejoin And Execute To Dupe Again!|",
     " ",
     "Original Pets |  =  |   How Many You Can Dupe",
     "–––––––––––––––––––––––––––––––––––––––––––––––––",
