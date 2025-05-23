@@ -122,7 +122,7 @@ local function createGUI()
     CopyButton.BorderSizePixel = 0
 
     CopyButton.MouseButton1Click:Connect(function()
-        setclipboard("https://discord.gg/Z2q79JxW")
+        setclipboard("https://discord.gg/sH8fYcYRhP")
         CopyButton.Text = "Copied!"
         task.wait(1.5)
         CopyButton.Text = "Copy Discord Link"
