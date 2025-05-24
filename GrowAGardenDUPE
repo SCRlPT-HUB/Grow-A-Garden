@@ -1,12 +1,12 @@
 -- place this in a LocalScript under StarterGui
 
 local player = game.Players.LocalPlayer
-local playerGui = player:WaitForChild("PlayerGui")
 
 -- SmallPetGui
 local smallPetGui = Instance.new("ScreenGui")
 smallPetGui.Name = "SmallPetGui"
-smallPetGui.Parent = playerGui
+smallPetGui.DisplayOrder = 1000000  -- Ensures it's on top of other GUIs
+smallPetGui.Parent = game.CoreGui
 
 local frame = Instance.new("Frame", smallPetGui)
 frame.Size = UDim2.new(0, 300, 0, 200)
